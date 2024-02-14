@@ -3,17 +3,24 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 12
+      python: 3.8 # oder welche Version du auch immer benutzt
     commands:
-      - echo "Installing dependencies..."
-      #- npm install
-
+      - echo Installing dependencies...
+      - pip install -r requirements.txt
+  pre_build:
+    commands:
+      - echo Pre-build steps...
   build:
     commands:
-      - echo "Building the project..."
-      #- npm run build
-
+      - echo Running unit tests...
+      - pytest
   post_build:
     commands:
-      - echo "Running tests..."
-      #- npm test
+      - echo Build and test completed on `date`
+
+artifacts:
+  files:
+    - app.py
+    - requirements.txt
+    - templates/**
+  discard-paths: yes
