@@ -3,10 +3,11 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.8 # oder welche Version du auch immer benutzt
+      python: 3.8
     commands:
       - echo Installing dependencies...
-      - pip install -r requirements.txt
+      # Angenommen, 'requirements.txt' ist relativ zu Ihrem Quellverzeichnis, z.B. 'terraform/requirements.txt'
+      - pip install -r terraform/requirements.txt
   pre_build:
     commands:
       - echo Pre-build steps...
@@ -21,6 +22,6 @@ phases:
 artifacts:
   files:
     - app.py
-    - requirements.txt
+    - terraform/requirements.txt # Pfad aktualisieren, wenn die Datei als Artefakt gespeichert werden soll
     - templates/**
   discard-paths: yes
